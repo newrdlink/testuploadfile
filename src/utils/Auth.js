@@ -34,11 +34,29 @@ class Api extends React.Component {
 
   upload(fd) {
     console.log("11")
-    return fetch(`${this.address}/public`, {
+    console.log(fd)
+    return fetch(`${this.address}/public/workers`, {
       method: "POST",
       headers: this.headers,
       // body: JSON.stringify(fd),
       body: fd,
+    }).then(handleResponse);
+  }
+
+  createWorker(data) {
+    console.log(data)
+    return fetch(`${this.address}/workers`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        middleName: data.middleName,
+        image: data.image,
+        position: data.position,
+      }),
     }).then(handleResponse);
   }
 }
