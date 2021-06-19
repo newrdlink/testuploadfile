@@ -11,10 +11,13 @@ const Form = () => {
   const submit = async (evt) => {
     evt.preventDefault()
     // console.log(userData)
-    let fd = new FormData();
-    fd.append('myfile', file)
-
-    api.upload(fd)
+    let data = new FormData();
+    data.append('myfile', file)
+    // download user info from form inputs
+    data.append('workerInfo', JSON.stringify(userData))
+    //
+    // api.upload(fd)
+    api.createWorker(data)
       .then((res) => {
         const { uploadPath } = res;
         setUserData({ ...userData, image: uploadPath })

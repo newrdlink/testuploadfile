@@ -44,19 +44,23 @@ class Api extends React.Component {
   }
 
   createWorker(data) {
-    console.log(data)
+    // console.log(data)
+    // console.log("11")
     return fetch(`${this.address}/workers`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        middleName: data.middleName,
-        image: data.image,
-        position: data.position,
-      }),
+      headers: this.headers,
+      // {
+        // "Content-Type": "application/json"
+        
+      // },
+      body: data,
+      // body: JSON.stringify({
+      //   firstName: data.firstName,
+      //   lastName: data.lastName,
+      //   middleName: data.middleName,
+      //   image: data.image,
+      //   position: data.position,
+      // }),
     }).then(handleResponse);
   }
 }
