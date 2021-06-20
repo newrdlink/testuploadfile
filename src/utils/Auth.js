@@ -66,7 +66,8 @@ class Api extends React.Component {
 }
 //создаем экземпляр
 const api = new Api({
-  address: "http://api.vstorona.didrom.ru",
+  address: "http://localhost:5000",
+  // address: "http://api.vstorona.didrom.ru",
   headers: {
     "Contetnt-Type": "multipart/form-data",
     // "Content-Type": "application/json",
