@@ -32,16 +32,16 @@ class Api extends React.Component {
     }).then(handleResponse);
   }
 
-  upload(fd) {
-    console.log("11")
-    console.log(fd)
-    return fetch(`${this.address}/public/workers`, {
-      method: "POST",
-      headers: this.headers,
-      // body: JSON.stringify(fd),
-      body: fd,
-    }).then(handleResponse);
-  }
+  // upload(fd) {
+  //   console.log("11")
+  //   console.log(fd)
+  //   return fetch(`${this.address}/public/workers`, {
+  //     method: "POST",
+  //     headers: this.headers,
+  //     // body: JSON.stringify(fd),
+  //     body: fd,
+  //   }).then(handleResponse);
+  // }
 
   createWorker(data) {
     // console.log(data)
@@ -50,8 +50,8 @@ class Api extends React.Component {
       method: "POST",
       headers: this.headers,
       // {
-        // "Content-Type": "application/json"
-        
+      // "Content-Type": "application/json"
+
       // },
       body: data,
       // body: JSON.stringify({
@@ -63,7 +63,25 @@ class Api extends React.Component {
       // }),
     }).then(handleResponse);
   }
+
+  getWorkers() {
+    return fetch(`${this.address}/workers`, {
+      method: "GET",
+      headers: this.headers,
+    }
+    ).then(handleResponse);
+  }
+
+  rmWorker(_id) {
+    return fetch(`${this.address}/workers/${_id}`, {
+      method: "DELETE",
+      headers: this.headers,
+    }
+    )
+  }
+
 }
+
 //создаем экземпляр
 const api = new Api({
   address: "http://localhost:5000",
